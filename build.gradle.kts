@@ -5,13 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.devttangkong.compose_appbar"
+    namespace = "dev.ttangkong.compose_appbar"
     compileSdk = 35
 
     defaultConfig {
         minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 

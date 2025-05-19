@@ -1,4 +1,4 @@
-package com.devttangkong.compose_appbar
+package dev.ttangkong.compose_appbar
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue

@@ -1,4 +1,4 @@
-package com.devttangkong.compose_appbar
+package dev.ttangkong.compose_appbar
 
 import androidx.compose.foundation.gestures.ScrollableState
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource

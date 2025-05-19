@@ -1,4 +1,4 @@
-package com.devttangkong.compose_appbar
+package dev.ttangkong.compose_appbar
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.gestures.ScrollableState

@@ -1,4 +1,4 @@
-package com.devttangkong.compose_appbar.components
+package dev.ttangkong.compose_appbar.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.*
@@ -9,11 +9,11 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.devttangkong.compose_appbar.AppBarBehavior
-import com.devttangkong.compose_appbar.AppBarState
-import com.devttangkong.compose_appbar.MaterialAppBarBehavior
-import com.devttangkong.compose_appbar.SliverController
-import com.devttangkong.compose_appbar.rememberAppBarState
+import dev.ttangkong.compose_appbar.AppBarBehavior
+import dev.ttangkong.compose_appbar.AppBarState
+import dev.ttangkong.compose_appbar.MaterialAppBarBehavior
+import dev.ttangkong.compose_appbar.SliverController
+import dev.ttangkong.compose_appbar.rememberAppBarState
 import kotlin.math.roundToInt
 
 // This alignment constants for only the hide-able appbar.

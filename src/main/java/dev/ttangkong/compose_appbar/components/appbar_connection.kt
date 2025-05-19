@@ -1,4 +1,4 @@
-package com.devttangkong.compose_appbar.components
+package dev.ttangkong.compose_appbar.components
 
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.ScrollableState
@@ -14,7 +14,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import com.devttangkong.compose_appbar.SliverController
+import dev.ttangkong.compose_appbar.SliverController
 
 @Composable
 fun AppBarConnection(
