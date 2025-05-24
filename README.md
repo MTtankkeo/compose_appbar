@@ -15,6 +15,13 @@ This package allows easy and light implementation of appbar in jetpack compose e
 
 > Designed to implement flexible appbar behavior by utilizing only fundamental underlying behaviors and excluding unnecessary features.
 
+## How to make it dependent?
+This example for Gradle about Groovy & Kotlin DSL.
+
+```kts
+implementation("dev.ttangkong:compose_appbar:1.0.1-beta1")
+```
+
 ## How to make appbar?
 Please refer to the code below!
 
