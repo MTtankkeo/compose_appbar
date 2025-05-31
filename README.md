@@ -11,6 +11,8 @@
   </table>
 </div>
 
+<a href="https://jetc.dev/issues/266.html"><img src="https://github.com/user-attachments/assets/b16ddbfd-1e43-4a17-8b95-57bb8e5b6ace"></a>
+
 This package allows easy and light implementation of appbar in jetpack compose environment.
 
 > Designed to implement flexible appbar behavior by utilizing only fundamental underlying behaviors and excluding unnecessary features.
