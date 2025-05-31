@@ -1,3 +1,5 @@
+<a href="https://jetc.dev/issues/266.html"><img src="https://github.com/user-attachments/assets/5f22db99-e836-451a-92dd-24a06a750c57"></a>
+
 <div align="center">
   <img src="https://github.com/user-attachments/assets/68792aec-916f-44ab-89a6-38296fb1fa68"></img>
   <h1>Jetpack Compose AppBar</h1>
@@ -10,8 +12,6 @@
     </tbody>
   </table>
 </div>
-
-<a href="https://jetc.dev/issues/266.html"><img src="https://github.com/user-attachments/assets/b16ddbfd-1e43-4a17-8b95-57bb8e5b6ace"></a>
 
 This package allows easy and light implementation of appbar in jetpack compose environment.
 
