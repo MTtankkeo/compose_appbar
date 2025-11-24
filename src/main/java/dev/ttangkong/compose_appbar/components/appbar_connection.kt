@@ -8,27 +8,30 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import dev.ttangkong.compose_appbar.SliverController
+import dev.ttangkong.compose_appbar.AppBarController
+import dev.ttangkong.compose_appbar.rememberAppBarController
 
 @Composable
 fun AppBarConnection(
+    controller: AppBarController = rememberAppBarController(),
     scrollableState: ScrollableState? = null,
     appBars: @Composable ColumnScope.() -> Unit = {},
     content: @Composable () -> Unit,
 ) {
-    val controller = remember { SliverController() }
     val sliverColumn: @Composable (@Composable ColumnScope.() -> Unit) -> Unit = { children ->
         Column(
             modifier = Modifier.scrollable(
                 orientation = Orientation.Vertical,
                 state = rememberScrollableState {
-                    controller.onScroll(available = it, NestedScrollSource.Drag)
+                    controller.onScroll(available = it, NestedScrollSource.UserInput)
                 }
             )
         ) {
@@ -39,7 +42,18 @@ fun AppBarConnection(
     // A scrollable state may need to be referenced for handle the nested scroll of a appbar.
     controller.scrollableState = scrollableState
 
-    CompositionLocalProvider(SliverController.Provider provides controller) {
+    // Ensures the appbar aligns automatically when the user finishes scrolling.
+    LaunchedEffect(scrollableState) {
+        if (scrollableState != null) {
+            snapshotFlow { scrollableState.isScrollInProgress }.collect { isScrolling ->
+                if (!isScrolling) {
+                    controller.onScrollEnd()
+                }
+            }
+        }
+    }
+
+    CompositionLocalProvider(AppBarController.Provider provides controller) {
         Column(
             modifier = Modifier.nestedScroll(remember { object : NestedScrollConnection {
                 override fun onPostScroll(

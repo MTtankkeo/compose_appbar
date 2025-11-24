@@ -2,15 +2,23 @@ package dev.ttangkong.compose_appbar
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.gestures.ScrollableState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+
+@Composable
+fun rememberAppBarController(): AppBarController {
+    return remember { AppBarController() }
+}
 
 data class AppBarStateConnection(
     val state: AppBarState,
     val behavior: AppBarBehavior,
 )
 
-class SliverController {
+class AppBarController {
     private val connections = arrayListOf<AppBarStateConnection>()
 
     // Optionally defined according to the given argument in a composition.
@@ -46,8 +54,12 @@ class SliverController {
         return consumed
     }
 
+    suspend fun onScrollEnd() {
+        connections.forEach { it.behavior.handleScrollEnd(it.state, scrollableState) }
+    }
+
     companion object {
         @SuppressLint("CompositionLocalNaming")
-        val Provider = staticCompositionLocalOf<SliverController> { error("슬라이버 컨트롤러가 하위 요소로 전파되지 못했습니다.") }
+        val Provider = staticCompositionLocalOf<AppBarController> { error("앱바 컨트롤러가 하위 요소로 전파되지 못했습니다.") }
     }
 }

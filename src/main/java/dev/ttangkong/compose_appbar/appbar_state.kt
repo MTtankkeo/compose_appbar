@@ -1,5 +1,9 @@
 package dev.ttangkong.compose_appbar
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.AnimationVector1D
+import androidx.compose.animation.core.Easing
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -12,10 +16,10 @@ fun rememberAppBarState(): AppBarState {
     return rememberSaveable(saver = AppBarState.Saver) { AppBarState(0f) }
 }
 
-open class AppBarState(
-    initialOffset: Float,
-) {
+open class AppBarState(initialOffset: Float) {
     var offset by mutableFloatStateOf(initialOffset)
+
+    var offsetAnimatable: Animatable<Float, AnimationVector1D>? = null
 
     // Defined when layout phase or composition of a target component.
     // And, this value is mostly equal to the height of the component.
@@ -39,6 +43,24 @@ open class AppBarState(
             return oldOffset - offset
         }
         return 0f
+    }
+
+    suspend fun animateTo(
+        targetOffset: Float,
+        duration: Int,
+        easing: Easing,
+    ) {
+        offsetAnimatable?.stop()
+        offsetAnimatable = Animatable(offset).apply {
+            animateTo(
+                targetOffset,
+                tween(durationMillis = duration, easing = easing),
+            ) {
+                offset = value
+            }
+
+            offsetAnimatable = null
+        }
     }
 
     companion object {

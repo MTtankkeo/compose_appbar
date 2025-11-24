@@ -10,9 +10,9 @@ import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import dev.ttangkong.compose_appbar.AppBarBehavior
+import dev.ttangkong.compose_appbar.AppBarController
 import dev.ttangkong.compose_appbar.AppBarState
 import dev.ttangkong.compose_appbar.MaterialAppBarBehavior
-import dev.ttangkong.compose_appbar.SliverController
 import dev.ttangkong.compose_appbar.rememberAppBarState
 import kotlin.math.roundToInt
 
@@ -37,14 +37,14 @@ fun AppBar(
     state: AppBarState = rememberAppBarState(),
     content: @Composable (AppBarState) -> Unit,
 ) {
-    val controller = SliverController.Provider.current
+    val controller = AppBarController.Provider.current
 
-    // When a component is entered the composition, attaches a sliver state form a controller.
+    // When a component is entered the composition, attaches a appbar state form a controller.
     LaunchedEffect(key1 = "Attach state to controller") {
         controller.attach(state, behavior)
     }
 
-    // When a component is leave the composition, detaches a sliver state from a controller.
+    // When a component is leave the composition, detaches a appbar state from a controller.
     DisposableEffect(key1 = "Detach state to controller") {
         onDispose { controller.detach(state) }
     }
@@ -95,14 +95,14 @@ fun SizedAppBar(
     state: AppBarState = rememberAppBarState(),
     content: @Composable (AppBarState) -> Unit,
 ) {
-    val controller = SliverController.Provider.current
+    val controller = AppBarController.Provider.current
 
-    // When a component is entered the composition, attaches a sliver state form a controller.
+    // When a component is entered the composition, attaches the appbar state form a controller.
     LaunchedEffect(key1 = "Attach state to controller") {
         controller.attach(state, behavior)
     }
 
-    // When a component is leave the composition, detaches a sliver state from a controller.
+    // When a component is leave the composition, detaches the appbar state from a controller.
     DisposableEffect(key1 = "Detach state to controller") {
         onDispose { controller.detach(state) }
     }

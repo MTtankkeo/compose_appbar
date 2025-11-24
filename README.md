@@ -130,5 +130,8 @@ AppBarConnection {
 
 | Properie | Description | Default value | Type
 | ------ | ------ | ------ | ------
-| floating | Whether possible with the app bar expands or shrinks even if a user do not scroll to the highest upper (when scroll offset 0). | true | boolean
-| dragOnlyExpanding | Whether only possible with drag when the user needs to start extending the appbar. | false | boolean
+| floating | Whether possible with the app bar expands or shrinks even if a user do not scroll to the highest upper (when scroll offset 0). | true | Boolean
+| dragOnlyExpanding | Whether only possible with drag when the user needs to start extending the appbar. | false | Boolean
+| alignment | Enables automatic alignment of the app bar after scrolling ends, snapping it to fully expanded or fully collapsed state. | true | Boolean
+| alignmentDuration | The duration of the automatic alignment animation in milliseconds. | 500 | Int
+| alignmentEasing | The easing curve applied to the automatic alignment animation. | Ease | Easing
