@@ -19,6 +19,12 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import dev.ttangkong.compose_appbar.AppBarController
 import dev.ttangkong.compose_appbar.rememberAppBarController
 
+/**
+ * A composable that sets up the connection between scrollable content and appbars.
+ *
+ * It provides automatic nested scroll handling, passes scroll events to the
+ * [AppBarController], and ensures app bars align correctly when scrolling ends.
+ */
 @Composable
 fun AppBarConnection(
     controller: AppBarController = rememberAppBarController(),

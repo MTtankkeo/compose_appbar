@@ -7,7 +7,7 @@
     <thead>
       <tr>
         <th>Version</th>
-        <th>v1.0.1-beta1</th>
+        <th>v1.1.0</th>
       </tr>
     </tbody>
   </table>
@@ -21,7 +21,7 @@ This package allows easy and light implementation of appbar in jetpack compose e
 This example for Gradle about Groovy & Kotlin DSL.
 
 ```kts
-implementation("dev.ttangkong:compose_appbar:1.0.1-beta1")
+implementation("dev.ttangkong:compose_appbar:1.1.0")
 ```
 
 ## How to make appbar?

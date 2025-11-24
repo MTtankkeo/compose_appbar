@@ -16,18 +16,14 @@ import dev.ttangkong.compose_appbar.MaterialAppBarBehavior
 import dev.ttangkong.compose_appbar.rememberAppBarState
 import kotlin.math.roundToInt
 
-// This alignment constants for only the hide-able appbar.
-//
-// Used by [AppBar]
+/** This alignment constants for only the hide-able appbar. */
 enum class AppBarAlignment {
     Scroll,
     Center,
     Absolute,
 }
 
-// This appbar is a hide-able appbar that does not change its size directly.
-//
-// Used by [AppBarConnection].
+/** A composable that provides a hideable app bar whose size is controlled indirectly. */
 @Composable
 fun AppBar(
     modifier: Modifier = Modifier,
@@ -85,7 +81,7 @@ fun AppBar(
     }
 }
 
-// Used by [AppBarConnection].
+/** A composable that displays an appbar with a given size and behavior. */
 @Composable
 fun SizedAppBar(
     modifier: Modifier = Modifier,

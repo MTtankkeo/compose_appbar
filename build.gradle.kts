@@ -17,10 +17,7 @@ val packageVersion = property("package.version") as String
 val packageRepository = property("package.repository") as String
 val packageDescription = property("package.description") as String
 
-val signingKey = file("signing-key.asc").readText()
-
 signing {
-    useInMemoryPgpKeys(signingKey, "")
     sign(publishing.publications)
 }
 
@@ -35,7 +32,7 @@ mavenPublishing {
     pom {
         name = packageId
         description = packageDescription
-        url = "<$packageRepository>"
+        url = packageRepository
 
         licenses {
             license {
