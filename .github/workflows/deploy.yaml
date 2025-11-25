@@ -1,0 +1,41 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  ready:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: 21
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Update gradle.properties
+        run: |
+          echo "" >> gradle.properties
+          echo "mavenCentralUsername=${{ secrets.MAVEN_CENTRAL_USERNAME }}" >> gradle.properties
+          echo "mavenCentralPassword=${{ secrets.MAVEN_CENTRAL_PASSWORD }}" >> gradle.properties
+          echo "signing.keyId=${{ secrets.SIGNING_KEY_ID }}" >> gradle.properties
+          echo "signing.password=${{ secrets.SIGNING_PASSWORD }}" >> gradle.properties
+          echo "signing.secretKeyRingFile=secring.gpg" >> gradle.properties
+
+      - name: Add secring.gpg
+        run: echo "${{ secrets.SECRING_GPG_BASE64 }}" | base64 --decode > secring.gpg
+
+      - name: Execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Gradlew [publishToMaven]
+        run: ./gradlew publishToMaven
